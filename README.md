@@ -31,14 +31,6 @@
 
 ---
 
-## ERD
-
-![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/275fce64-3a7e-47d1-a43d-133f74e7c08b)
-
-<br>
-
----
-
 ## 개발 환경
 
 **brew를 이용한 node.js 최신 버전 설치**
@@ -71,3 +63,14 @@ export PATH="/usr/local/opt/node@18/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/node@18/lib"
 export CPPFLAGS="-I/usr/local/opt/node@18/include"
 ```
+
+<br>
+
+---
+
+## ERD
+
+![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/275fce64-3a7e-47d1-a43d-133f74e7c08b)
+
+<br>
+
