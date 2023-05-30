@@ -26,3 +26,11 @@
 - Frontend: HTML / Web Framework(사용 가능)
 - Backend: node.js
   - node.js 내에서 SQL을 구현할 것(nativ한 SQL 사용)
+
+<br>
+
+---
+
+## ERD
+
+![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/275fce64-3a7e-47d1-a43d-133f74e7c08b)
