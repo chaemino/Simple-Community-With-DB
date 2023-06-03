@@ -1,3 +1,6 @@
 .DS_Store
 web/node_modules/
 maria/node_modules/
+*.swp
+web/*.swp
+maria/*.swp
