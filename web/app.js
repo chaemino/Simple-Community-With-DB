@@ -33,13 +33,13 @@ app.post('/writeOk', (req, res) => {
 	const body = req.body;
 	console.log(body);
 
-	const sql = "INSERT INTO 게시글 VALUES(?,?,?,curdate(),?)"
-	const params = [body.username, body.title, body.content, body.password]
+	const sql = "INSERT INTO 게시글(작성자, 제목, 내용, 작성일자, 비밀번호) VALUES(?,?,?,now(),?)";
+	const params = [body.username, body.title, body.content, body.password];
 	console.log(sql);
 	console.log(params);
 
 	maria.query(sql, params, (err) => {
-		if(err) throw console.log('query is not excuted. insert fail.\n'+err);
+		if(err) throw err;
 		else res.redirect('/mainpage')
 	});
 });
