@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 /* ejs */
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -11,12 +14,34 @@ app.set("views", __dirname + "/views");
 const maria = require('../maria/maria.js')
 //maria.connect();
 
-app.get('/mainpage', (req, res) => {
-	res.render('mainpage');
-})
-
 app.get('/', (req, res) => {
 	res.send('Hello World')
+});
+
+/* view all posts page render*/
+app.get('/mainpage', (req, res) => {
+	res.render('mainpage');
+});
+
+/* write post page*/
+app.get('/write', (req, res) => {
+	res.render('write-page');
+});
+
+/* click write button */
+app.post('/writeOk', (req, res) => {
+	const body = req.body;
+	console.log(body);
+
+	const sql = "INSERT INTO 게시글 VALUES(?,?,?,curdate(),?)"
+	const params = [body.username, body.title, body.content, body.password]
+	console.log(sql);
+	console.log(params);
+
+	maria.query(sql, params, (err) => {
+		if(err) throw console.log('query is not excuted. insert fail.\n'+err);
+		else res.redirect('/mainpage')
+	});
 });
 
 app.get('/mariaDB', (req, res) =>{

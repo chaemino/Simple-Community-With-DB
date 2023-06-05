@@ -1,7 +1,7 @@
 <html>
 <head>
-  <title>채민 게시판</title>
   <meta charset = "utf-8">
+  <title>채민 게시판</title>
   <style>
     h1 {margin: 30px 30px;}
     h2 {margin: 30px 50px; flex: 1;}
@@ -23,24 +23,24 @@
   </style>
 </head>
 <body>
-  <div class="big-box">
-    <h1>채민 게시판</h1>
-    <hr>
-    <div class="sub-title">
-      <h2>게시글 작성<h2>
-      <button class="write" type="button">
-        작성하기
-      </button>
+  <form action='/writeOk' method='post'>
+    <div class="big-box">
+      <h1>채민 게시판</h1>
+      <hr>
+      <div class="sub-title">
+        <h2>게시글 작성<h2>
+        <button class="write" type="submit">작성하기</button>
+      </div>
+      <div class="small-box">
+          작성자 <input class=writer type="text" name="username" required>
+          비밀번호 <input class=password type="password" name="password" required> *삭제하기 위해서 필요한 비밀번호입니다.
+          <br></br>
+          제목 <input class=title type="text" name="title" required>
+          <br></br>
+          <textarea class=text-area name="content" required></textarea>
+      </div>
     </div>
-    <div class="small-box">
-      <form action="/board/new" method="post">
-        작성자 <input class=writer type="text" name="user-name" required>
-        비밀번호 <input class=password type="password" name="password" required> *삭제하기 위해서 필요한 비밀번호입니다.
-        <br></br>
-        제목 <input class=title type="text" name="title" required>
-        <br></br>
-        <textarea class=text-area name="content" required></textarea>
-    </div>
-  </div>
+  </form>
 </body>
 </html>
+
