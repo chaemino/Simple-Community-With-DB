@@ -1,0 +1,48 @@
+<html lang="kr">
+<head>
+  <title>채민 게시판</title>
+  <meta charset = "utf-8">
+  <style>
+    h1 {margin: 30px 30px;}
+    h2 {margin: 30px 50px; flex: 1;}
+    hr {margin: 20px}
+    .big-box { border: dashed black 1px; margin-left: auto; margin-right: auto;}
+    .sub-title {display: flex;}
+    .write { flex: 1; width: 20%; height: 100%; margin-left: 80%;}
+    .small-box { border: dashed black 1px; margin-left: 50px; margin-right: 50px;}
+    .th {height: 6vh;}
+  </style>
+</head>
+<body>
+  <div class="big-box">
+    <h1>채민 게시판</h1>
+    <hr>
+    <div class="sub-title">
+      <h2>전체 게시글 목록<h2>
+      <button class="write" type="button">
+        글쓰기
+      </button>
+    </div>
+    <div class="small-box">
+      <div class="post-list">
+      <!-- 게시글 목록 -->
+        <table id="board">
+          <tr>
+            <th style="width: 15%;">게시글 번호</th>
+            <th>제목</th>
+            <th>작성 일자</th>
+            <th>작성자</th>
+          </tr>
+          <!-- 게시글 목록 보여주는 ejs -->
+          <tr>
+          </tr>
+       </table>
+      </div>
+      <center>
+        <!-- 페이징을 위한 코드 -->
+      </center>
+    </div>
+  </div>
+</body>
+</html>
+
