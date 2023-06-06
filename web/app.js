@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+const moment = require('moment')
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,9 +20,29 @@ app.get('/', (req, res) => {
 });
 
 /* view all posts page render*/
-app.get('/mainpage', (req, res) => {
+app.get('/mainpage/list', (req, res) => {
 	res.render('mainpage');
 });
+
+/* show post list */
+/* Offset Pagination */
+app.get('/products/:page', (req, res) => {
+	const page_size = 3; // 각 페이지의 최대 항목 수
+	const page = req.params.page || 1 // if page is null then 1, 현재 페이지 번호
+	console.log(page);
+
+	const sql = 'SELECT * FROM 게시글';
+	maria.query(sql, (err, rows, fields) => {
+		for(let i=0; i<rows.length; i++){
+			console.log('rows'+JSON.stringify(rows[i]));
+			rows[i].date = moment(rows[i].date).format('YYYY-MM-DD');
+		}
+		console.log("rows: "+rows[1].date);
+		if (err) cosole.log('query is not excuted. select fail...\n' + err);
+		else res.render('')
+	});
+});
+
 
 /* write post page*/
 app.get('/write', (req, res) => {
@@ -40,7 +61,7 @@ app.post('/writeOk', (req, res) => {
 
 	maria.query(sql, params, (err) => {
 		if(err) throw err;
-		else res.redirect('/mainpage')
+		else res.redirect('/mainpage/list')
 	});
 });
 
