@@ -35,11 +35,11 @@ app.get('/products/:page', (req, res) => {
 	maria.query(sql, (err, rows, fields) => {
 		for(let i=0; i<rows.length; i++){
 			console.log('rows'+JSON.stringify(rows[i]));
-			rows[i].date = moment(rows[i].date).format('YYYY-MM-DD');
+			rows[i].작성일자 = moment(rows[i].작성일자).format('YYYY-MM-DD');
 		}
 		console.log("rows: "+rows[1].date);
 		if (err) cosole.log('query is not excuted. select fail...\n' + err);
-		else res.render('')
+		else res.render('mainpage.ejs', {list:rows});
 	});
 });
 

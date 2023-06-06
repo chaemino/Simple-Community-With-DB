@@ -9,8 +9,9 @@
     .big-box { border: dashed black 1px; margin-left: auto; margin-right: auto;}
     .sub-title {display: flex;}
     .write { flex: 1; width: 20%; height: 100%; margin-left: 80%;}
-    .small-box { border: dashed black 1px; margin-left: 50px; margin-right: 50px;}
-    .th {height: 6vh;}
+    .small-box { border: dashed black 1px; margin-left: 50px; margin-right: 50px; margin-bottom: 50px}
+	table {width:100%; margin-left:auto; margin-right:auto;}
+	td {text-align:center}
   </style>
 </head>
 <body>
@@ -27,15 +28,25 @@
       <div class="post-list">
       <!-- 게시글 목록 -->
         <table id="board">
-          <tr>
-            <th style="width: 15%;">게시글 번호</th>
-            <th>제목</th>
-            <th>작성 일자</th>
-            <th>작성자</th>
-          </tr>
-          <!-- 게시글 목록 보여주는 ejs -->
-          <tr>
-          </tr>
+		  <thead>
+			<tr>
+			  <th style="width: 10%; height: 6vh;">게시글 번호</th>
+			  <th style="width: 40%; height: 6vh;">제목</th>
+			  <th style="width: 20%; height: 6vh;">작성 일자</th>
+			  <th style="width: 10%; height: 6vh;">작성자</th>
+			</tr>
+		  <thead>
+		  <!-- 게시글 목록 보여주는 ejs -->
+		  <tbody>
+		    <% for (i=0; i<list.length; i++) { %>
+            <tr>
+			  <td><%=list[i].게시글ID%></td>
+			  <td style="text-align:left"><%=list[i].제목%></td>
+			  <td><%=list[i].작성일자%></td>
+			  <td><%=list[i].작성자%></td>
+            </tr>
+		    <% } %>
+		  <tbody>
        </table>
       </div>
       <center>
