@@ -88,8 +88,23 @@ app.post('/post/comment/:postID', (req, res) => {
 
 	maria.query(sql, params, (err) => {
 		if(err) console.log("query is not excuted.\n"+err);
-		else res.render('/post/'+postID);
+		else res.redirect('/post/'+postID);
 	});
+});
+
+/*delete comment*/
+app.post('/comment/delete/:commentID/:postID', (req, res) =>{
+	const cID = req.params.commentID;
+	const pID = req.params.postID;
+	console.log(cID);
+	console.log(pID);
+
+	const sql = `DELETE FROM 댓글 WHERE 댓글ID=${cID}`;
+    maria.query(sql, (err, rows, fields) => {
+		console.log(rows);
+        if(err) console.log("query is not excuted.\n"+err);
+		else res.redirect('/post/'+pID);
+     });
 });
 
 /* write post page*/

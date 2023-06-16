@@ -41,7 +41,14 @@
     <div class=comment>
       <h3>Comments</h3>
         <!-- 댓글 내용 -->
-
+		<% for (i=0; i<row2.length; i++) { %>
+			<form action="/comment/delete/<%=row2[i].댓글ID%>/<%=row1.게시글ID%>" method="post">
+				<strong><%=row2[i].작성자%></strong>
+				<%=row2[i].내용%>
+				<input type="submit" value="삭제">
+			</form>
+		<% } %>
+		<br></br>
       <form action="/post/comment/<%=row1.게시글ID%>" method="post">
         작성자 <input type="text" name="writer" required><br></br>
         <textarea class=comment-text name="commentText" required></textarea><br></br>
