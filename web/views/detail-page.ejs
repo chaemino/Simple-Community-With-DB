@@ -13,6 +13,13 @@
     .small-box { border: dashed black 1px; margin: 50px; padding:50px }
     .delete { float: right; margin-right: 5%;}
     .comment {border: dashed black 1px; margin: 50px; padding:50px}
+	.comment-text {
+		width: 100%;
+		margin-left:10px; margin-right:30px;
+		resize: none;
+		height: 50px;
+		padding: 10px;
+	}
   </style>
 </head>
 <body>
@@ -20,19 +27,26 @@
     <h1>채민 게시판</h1>
     <hr>
     <div class="sub-title">
-      <h2><%=row.제목%><h2>
-      <div class="writer">작성일자: <%=row.작성일자%></div>
-      <div class="write-date">작성자: <%=row.작성자%></div>
+      <h2><%=row1.제목%><h2>
+      <div class="writer">작성일자: <%=row1.작성일자%></div>
+      <div class="write-date">작성자: <%=row1.작성자%></div>
     </div>
     <div class="delete">
-      <button onclick="location.href='/post/delete/<%=row.게시글ID%>'">삭제하기</button>
+      <button type="button" onclick="location.href='/post/delete/<%=row1.게시글ID%>'">삭제하기</button>
     </div>
     <div class="small-box">
       <!-- 게시글 내용 -->
-	  <div><%=row.내용%></div>
+	  <div><%=row1.내용%></div>
     </div>
     <div class=comment>
-	  <!-- 게시글 댓들 -->	
+      <h3>Comments</h3>
+        <!-- 댓글 내용 -->
+
+      <form action="/post/comment/<%=row1.게시글ID%>" method="post">
+        작성자 <input type="text" name="writer" required><br></br>
+        <textarea class=comment-text name="commentText" required></textarea><br></br>
+        <input type="submit" value="작성">
+      </form> 
     </div>
   </div>
 </body>
