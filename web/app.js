@@ -50,15 +50,30 @@ app.get('/:page', (req, res) => {
 /*detail page*/
 app.get('/post/:postID', (req, res) => {
 	const postID = req.params.postID;
+	console.log("post detail page") // check enter this page
 
 	const sql = `SELECT * FROM 게시글 WHERE 게시글ID=${postID}`;
+	console.log(sql)
 	maria.query(sql, (err, rows, fields) => {
-		rows[0].작성일자 = moment(row[0].작성일자).format('YYYY-MM-DD');
+		rows[0].작성일자 = moment(rows[0].작성일자).format('YYYY-MM-DD');
 		console.log("contents: "+rows[0]);
 		if(err) console.log("query is not excuted.\n"+err);
-		else res.render("detail-page.ejs", {row:row[0]});
+		else res.render("detail-page.ejs", {row:rows[0]});
 	});
 });
+
+/*delete post*/
+app.post('/post/delete/:postID', (req, res) =>{
+	const postID = req.params.postID;
+	console.log(postID)
+
+	const sql = `DELETE FROM 게시글 WHERE 게시글ID=${postID}`;
+	maria.query(sql, (err, rows, fields) => {
+		if(err) console.log("query is not excuted.\n"+err);
+		else res.redirect('/');
+	});
+});
+
 /* write post page*/
 app.get('/write', (req, res) => {
 	res.render('write-page');
