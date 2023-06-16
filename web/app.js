@@ -16,7 +16,7 @@ const maria = require('../maria/maria.js')
 //maria.connect();
 
 app.get('/', (req, res) => {
-	res.send('Hello World')
+	res.redirect('/1')
 });
 
 /* view all posts page render*/
@@ -26,24 +26,39 @@ app.get('/mainpage/list', (req, res) => {
 
 /* show post list */
 /* Offset Pagination */
-app.get('/products/:page', (req, res) => {
+app.get('/:page', (req, res) => {
 	const page_size = 3; // 각 페이지의 최대 항목 수
-	const page = req.params.page || 1 // if page is null then 1, 현재 페이지 번호
-	console.log(page);
+	const page = Number(req.params.page || 1)
+	console.log(req.params);
+	console.log(`SELECT * FROM 게시글 limit ${page-1}, ${page+4}`);
 
-	const sql = 'SELECT * FROM 게시글';
+	// select * from 게시글 limit 0,5
+	// offset부터 limit까지
+	
+	const sql = `SELECT * FROM 게시글 ORDER BY 게시글ID DESC LIMIT ${page-1}, ${page+2};`;
 	maria.query(sql, (err, rows, fields) => {
 		for(let i=0; i<rows.length; i++){
 			console.log('rows'+JSON.stringify(rows[i]));
 			rows[i].작성일자 = moment(rows[i].작성일자).format('YYYY-MM-DD');
 		}
 		console.log("rows: "+rows[1].date);
-		if (err) cosole.log('query is not excuted. select fail...\n' + err);
+		if (err) console.log('query is not excuted. select fail...\n' + err);
 		else res.render('mainpage.ejs', {list:rows});
 	});
 });
 
+/*detail page*/
+app.get('/post/:postID', (req, res) => {
+	const postID = req.params.postID;
 
+	const sql = `SELECT * FROM 게시글 WHERE 게시글ID=${postID}`;
+	maria.query(sql, (err, rows, fields) => {
+		rows[0].작성일자 = moment(row[0].작성일자).format('YYYY-MM-DD');
+		console.log("contents: "+rows[0]);
+		if(err) console.log("query is not excuted.\n"+err);
+		else res.render("detail-page.ejs", {row:row[0]});
+	});
+});
 /* write post page*/
 app.get('/write', (req, res) => {
 	res.render('write-page');
@@ -61,7 +76,7 @@ app.post('/writeOk', (req, res) => {
 
 	maria.query(sql, params, (err) => {
 		if(err) throw err;
-		else res.redirect('/mainpage/list')
+		else res.redirect('/:page')
 	});
 });
 

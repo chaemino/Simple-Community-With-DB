@@ -12,6 +12,10 @@
     .small-box { border: dashed black 1px; margin-left: 50px; margin-right: 50px; margin-bottom: 50px}
 	table {width:100%; margin-left:auto; margin-right:auto;}
 	td {text-align:center}
+	.page{width: 50%;}
+    .page-item{list-style: none; display: inline-block; padding:0;}
+    .page-item li {display: inline;. text-align: center;}
+    .page-item a { float: left; display: block; font-size: 20px; padding: 5px 10px; color: black;}
   </style>
 </head>
 <body>
@@ -35,24 +39,34 @@
 			  <th style="width: 20%; height: 6vh;">작성 일자</th>
 			  <th style="width: 10%; height: 6vh;">작성자</th>
 			</tr>
-		  <thead>
+		  </thead>
 		  <!-- 게시글 목록 보여주는 ejs -->
 		  <tbody>
 		    <% for (i=0; i<list.length; i++) { %>
             <tr>
 			  <td><%=list[i].게시글ID%></td>
-			  <td style="text-align:left"><%=list[i].제목%></td>
+			  <td style="text-align:left"><a href="/post/<%=list[i].게시글ID%>"><%=list[i].제목%></a></td>
 			  <td><%=list[i].작성일자%></td>
 			  <td><%=list[i].작성자%></td>
             </tr>
 		    <% } %>
-		  <tbody>
+		  </tbody>
        </table>
       </div>
-      <center>
-        <!-- 페이징을 위한 코드 -->
-      </center>
     </div>
+	<center>
+		<form>
+		  <div class="page">
+			<ul class="page-item">
+			  <li> <a href="#" class="num">1</a></li>
+			  <li> <a href="#" class="num">2</a></li>
+			  <li> <a href="#" class="num">3</a></li>
+			  <li> <a href="#" class="num">4</a></li>
+			  <li> <a href="#" class="num">5</a></li>
+			</ul>
+		  </div>
+		</form>
+    </center>
   </div>
 </body>
 </html>
