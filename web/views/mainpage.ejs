@@ -24,7 +24,7 @@
     <hr>
     <div class="sub-title">
       <h2>전체 게시글 목록<h2>
-      <button class="write" type="button" onclick="location.href='/write'">
+      <button class="write" type="button" onclick="location.href='/new-post/write'">
         글쓰기
       </button>
     </div>
@@ -58,11 +58,9 @@
 		<form>
 		  <div class="page">
 			<ul class="page-item">
-			  <li> <a href="#" class="num">1</a></li>
-			  <li> <a href="#" class="num">2</a></li>
-			  <li> <a href="#" class="num">3</a></li>
-			  <li> <a href="#" class="num">4</a></li>
-			  <li> <a href="#" class="num">5</a></li>
+			  <% for (i=1; i<=total; i++) { %>
+				  <li> <a href="/mainpage/<%=i%>" class="num"><%=i%></a><li>
+			  <% } %>
 			</ul>
 		  </div>
 		</form>

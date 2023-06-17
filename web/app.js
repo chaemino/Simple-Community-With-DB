@@ -16,34 +16,33 @@ const maria = require('../maria/maria.js')
 //maria.connect();
 
 app.get('/', (req, res) => {
-	res.redirect('/1')
-});
-
-/* view all posts page render*/
-app.get('/mainpage/list', (req, res) => {
-	res.render('mainpage');
+	res.redirect('/mainpage/1')
 });
 
 /* show post list */
 /* Offset Pagination */
-app.get('/:page', (req, res) => {
-	const page_size = 3; // 각 페이지의 최대 항목 수
-	const page = Number(req.params.page || 1)
-	console.log(req.params);
-	console.log(`SELECT * FROM 게시글 limit ${page-1}, ${page+4}`);
+app.get('/mainpage/:page', (req, res) => {
+	const page = (Number(req.params.page)-1)*3;
+	var size = page+2;
+	var total_size = 0;
 
-	// select * from 게시글 limit 0,5
-	// offset부터 limit까지
+	console.log("page:"+page)
+	console.log("size:"+size)
 	
-	const sql = `SELECT * FROM 게시글 ORDER BY 게시글ID DESC LIMIT ${page-1}, ${page+2};`;
-	maria.query(sql, (err, rows, fields) => {
+	const sql1 = `SELECT COUNT(*) as count FROM 게시글;`;
+	maria.query(sql1, (err, row, fields) =>{
+		if (err) console.log("select count query error\n"+err);
+		if (size >= row[0]) size = row[0]; 
+		total_size = (row[0].count/3)+1;
+	});
+
+	const sql2 = `SELECT * FROM 게시글 ORDER BY 게시글ID DESC LIMIT ${page}, 3`;
+	maria.query(sql2, (err, rows, fields) => {
 		for(let i=0; i<rows.length; i++){
-			console.log('rows'+JSON.stringify(rows[i]));
 			rows[i].작성일자 = moment(rows[i].작성일자).format('YYYY-MM-DD');
 		}
-		console.log("rows: "+rows[1].date);
 		if (err) console.log('query is not excuted. select fail...\n' + err);
-		else res.render('mainpage.ejs', {list:rows});
+		else res.render('mainpage.ejs', {list:rows, total:total_size});
 	});
 });
 
@@ -108,12 +107,12 @@ app.post('/comment/delete/:commentID/:postID', (req, res) =>{
 });
 
 /* write post page*/
-app.get('/write', (req, res) => {
+app.get('/new-post/write', (req, res) => {
 	res.render('write-page');
 });
 
 /* click write button */
-app.post('/writeOk', (req, res) => {
+app.post('/new-post/writeOk', (req, res) => {
 	const body = req.body;
 	console.log(body);
 
@@ -124,7 +123,7 @@ app.post('/writeOk', (req, res) => {
 
 	maria.query(sql, params, (err) => {
 		if(err) throw err;
-		else res.redirect('/:page')
+		else res.redirect('/')
 	});
 });
 
