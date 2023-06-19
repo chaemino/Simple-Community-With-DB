@@ -57,6 +57,9 @@ app.get('/post/:postID', (req, res) => {
 		const sql1_result = results[0];
 		const sql2_result = results[1];
 		sql1_result[0].작성일자 = moment(sql1_result[0].작성일자).format('YYYY-MM-DD');
+		for(let i=0; i<sql2_result.length; i++){
+			sql2_result[i].작성일자 = moment(sql2_result[i].작성일자).format('YYYY-MM-DD HH:MM:SS');
+		}
 		if(err) console.log("query is not excuted.\n"+err);
 		else res.render("detail-page.ejs", {row1:sql1_result[0], row2:sql2_result});
 	});
@@ -80,7 +83,7 @@ app.post('/post/comment/:postID', (req, res) => {
 	const body = req.body;
 	console.log(body);
 
-	const sql = "INSERT INTO 댓글(게시글ID, 작성자, 내용) VALUES(?,?,?)";
+	const sql = "INSERT INTO 댓글(게시글ID, 작성자, 내용, 작성일자) VALUES(?,?,?,now())";
 	const params = [postID, body.writer, body.commentText];
 	console.log(sql);
 	console.log(params);

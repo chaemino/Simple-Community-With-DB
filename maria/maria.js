@@ -34,6 +34,7 @@ conn.connect((err) => {
 		"게시글ID int NOT NULL,"+
 		"작성자 varchar(20) NOT NULL,"+
 		"내용 varchar(500) NOT NULL,"+
+		"작성일자 DATETIME NOT NULL,"+
 		"PRIMARY KEY(댓글ID),"+
 		"FOREIGN KEY(게시글ID) REFERENCES 게시글(게시글ID))";
 	conn.query(bsql, (err, result) => {
