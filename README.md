@@ -42,14 +42,15 @@
 
 4. 댓글 작성 및 삭제  
 
-![댓글](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/1783f6db-d6a6-47fe-97f3-7d5629f1cb43)
+![댓글작성삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/a0834cd9-3c47-4a89-a6a8-0d455148ca5e)
+
 
 ### 개발 환경 조건
 
 - RDBMS: MariaDB
 - Frontend: HTML / Web Framework(사용 가능)
 - Backend: node.js
-  - node.js 내에서 SQL을 구현할 것(nativ한 SQL 사용)
+  - node.js 내에서 SQL을 구현할 것(native한 SQL 사용)
 
 <br>
 
@@ -96,7 +97,9 @@ export CPPFLAGS="-I/usr/local/opt/node@18/include"
 
 ## ERD
 
-![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/d8c3266e-f670-49e7-a740-65c4383a45b1)
+![DB_community_수정](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/6b5ca8ad-4d82-48c2-99e0-5ff503d628ec)
+
+
 
 
 <br>
