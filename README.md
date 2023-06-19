@@ -20,6 +20,30 @@
 |5 |댓글 작성 |  - 게시글에 대한 댓글을 작성할 수 있다. <br> - 댓글에 대한 댓글 기능은 제공하지 않는다. <br> - 댓글에는 작성자, 시간, 내용이 포함된다. |
 |6 |댓글 삭제 |- 댓글은 삭제 가능하다. |
 
+## 동작
+
+1. 페이지네이션  
+
+![pagenation](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/2d822fe5-87d2-482a-b766-9fd479e24472)
+
+
+
+2. 게시글 작성  
+
+![게시글작성](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/b8e454b0-cf1e-4807-881f-b944532daf54)
+
+
+
+3. 게시글 삭제  
+
+![게시글삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/1c9e3925-6dd3-4231-add1-2ee0b8607d42)
+
+
+
+4. 댓글 작성 및 삭제  
+
+![댓글](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/1783f6db-d6a6-47fe-97f3-7d5629f1cb43)
+
 ### 개발 환경 조건
 
 - RDBMS: MariaDB
@@ -72,7 +96,67 @@ export CPPFLAGS="-I/usr/local/opt/node@18/include"
 
 ## ERD
 
-![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/275fce64-3a7e-47d1-a43d-133f74e7c08b)
+![DB_community](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/d8c3266e-f670-49e7-a740-65c4383a45b1)
+
 
 <br>
+
+---
+
+## 디렉토리 구조
+
+```
+.
+├── README.md
+├── maria
+├── node_modules
+├── package-lock.json
+├── package.json
+├── test.md
+└── web
+```
+
+`maria`: DB 설정 디렉토리
+`web`: 웹 프론트엔드 & 백엔드 디렉토리
+
+- `maria/`
+
+```
+maria/
+├── maria.js
+├── node_modules
+├── package-lock.json
+└── package.json
+```
+
+`maria.js`: mariaDB 연결 및 테이블 만들기
+
+- `web/`
+
+```
+web/
+├── app.js
+├── node_modules
+├── package-lock.json
+├── package.json
+├── test.html
+└── views
+```
+
+`app.js`: 백엔드 코드
+
+- `views/`
+
+```
+web/views
+├── detail-page.ejs
+├── mainpage.ejs
+├── test.ejs
+└── write-page.ejs
+```
+
+`detail-page.ejs` : 게시글 상세 페이지  
+`mainpage.ejs`: 메인페이지  
+`write-page.ejs`: 게시글 작성 페이지
+
 
