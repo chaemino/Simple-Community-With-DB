@@ -26,25 +26,28 @@
 
 1. 페이지네이션  
 
-![pagenation](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/2d822fe5-87d2-482a-b766-9fd479e24472)
+![pagenation](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/96f65d32-088a-4980-a983-fc6756adeb54)
 
 
 
 2. 게시글 작성  
 
-![게시글작성](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/b8e454b0-cf1e-4807-881f-b944532daf54)
+![게시글작성](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/30a16f43-b671-4062-aaa0-33ab4af5ba1f)
+
 
 
 
 3. 게시글 삭제  
 
-![게시글삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/1c9e3925-6dd3-4231-add1-2ee0b8607d42)
+![게시글삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/24e697b0-ce40-443c-9383-410464cfe74e)
+
 
 
 
 4. 댓글 작성 및 삭제  
 
-![댓글작성삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/a0834cd9-3c47-4a89-a6a8-0d455148ca5e)
+![댓글작성삭제](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/8f5d41c6-b45b-42f4-84f4-275ce6a42612)
+
 
 
 ### 개발 환경 조건
@@ -99,8 +102,7 @@ export CPPFLAGS="-I/usr/local/opt/node@18/include"
 
 ## ERD
 
-![DB_community_수정](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/6b5ca8ad-4d82-48c2-99e0-5ff503d628ec)
-
+![DB_community_수정](https://github.com/chaemino/cwnu-db-make-community/assets/107089629/3e69d0fb-df4d-4574-89f7-e799d137bb3b)
 
 
 
